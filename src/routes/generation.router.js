@@ -1,44 +1,19 @@
 const express = require("express")
-const kodersUseCase = require("../usecases/koders.usecase")
-const auth = require("../middlewares/auth.middleware")
+const generationUseCase = require("../usecases/generation.usecase")
 const router = express.Router()
 
-// router.use(auth)
-
-// GET /koders
-
-router.get("/", auth, async (request, response) => {
+// Get Generation 
+router.get("/", async ( request, response)=>{
     try{
 
-        const koders = await kodersUseCase.getAll()
+        const generation = await generationUseCase.getAll()
         response.json({
             succes: true,
             data:{
-                koders
+                generation
             },
         })
     } catch (error){
-        response.status(error.status || 500)
-        response.json({
-            succes: false,
-            error: error.message,
-        })
-    }
-
-})
-
-// POST /koder
-
-router.post("/", async (request, response) =>{
-    try{
-        const koderCreated = await kodersUseCase.create(request.body)
-        response.json({
-            success: true,
-            data: {
-                koder: koderCreated
-            }
-        })
-    }catch  (error){
         response.status(error.status || 500)
         response.json({
             succes: false,
@@ -49,13 +24,13 @@ router.post("/", async (request, response) =>{
 
 // GET /koders/:id
 
-router.get("/:id", auth,async (request, response) =>{
+router.get("/:id", async (request, response) =>{
     try{
     const id = request.params.id
-    const koders = await kodersUseCase.getById(id)
+    const generation = await generationUseCase.getById(id)
     response.json({
         succes: true,
-        data: {koders}
+        data: {generation}
     })
     }catch  (error){
         response.status(error.status || 500)
@@ -67,14 +42,14 @@ router.get("/:id", auth,async (request, response) =>{
 })
 
 // Delete By Id /koders/:id
-router.delete("/:id", auth,async (request, response) =>{
+router.delete("/:id", async (request, response) =>{
     try{
         const { id } = request.params
-        const koderDeleted = await kodersUseCase.deleteById(id)
+        const generationDeleted = await generationUseCase.deleteById(id)
 
         response.json({
             succes: true,
-            data: { koder: koderDeleted},
+            data: { koder: generationDeleted},
         })
     }catch(error){
         response.status(error.status || 500)
@@ -89,10 +64,10 @@ router.delete("/:id", auth,async (request, response) =>{
 router.patch("/:id", auth, async (request, response)=>{
     try{
         const {id} = request.params
-        const koderUpdated = await kodersUseCase.updateById(id, request.body)
+        const generationUpdated = await generationUseCase.updateById(id, request.body)
         response.json({
             success: true,
-            data: {koder: koderUpdated}
+            data: {koder: generationUpdated}
         })
     }catch(error){
         response.status(error.status || 500)

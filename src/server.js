@@ -1,6 +1,8 @@
 const express = require("express");
 const koderRouter = require("./routes/koders.router");
 const mentorsRouter = require("./routes/mentors.router");
+const authLog= require("./routes/auth.router")
+const generationRouter = require("./routes/generation.router")
 
 const app = express();
 
@@ -8,6 +10,9 @@ const app = express();
 app.use(express.json());
 app.use("/koders", koderRouter);
 app.use("/mentors", mentorsRouter);
+app.use("/auth", authLog);
+app.use("/generation", generationRouter)
+
 
 app.get("/", (request, response) => {
     response.json({

@@ -1,4 +1,5 @@
 const Koders = require("../models/koders.model")
+const encryptc= require("../lib/encrypt")
 const createError = require("http-errors")
 
 async function create (koderData) {
@@ -8,6 +9,7 @@ async function create (koderData) {
         throw createError(409, "email already in use")
     }
 
+    koderData.password  = await encryptc.encrypt(koderData.password)
     // const hash = "dklsak"
     const newKoder = await Koders.create(koderData)
     return newKoder
@@ -20,7 +22,7 @@ async function getAll(){
 }
 
 async function getById(id){
-    const koder = await Koder.findById(id)
+    const koder = await Koders.findById(id)
     return koder
 }
 async function deleteById(id){
