@@ -1,31 +1,25 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
 const schema = new mongoose.Schema({
-    number:{
-        type: Number,
-        required: true,
-        min: 1,
-        max: 100,
-    },
-    program: {
-        type: String,
-        require: true,
-        enum:[
-            "javascript",
-            "python",
-            "ios",
-            "android",
-        ]
-    },
-    startDate: {
+  number: {
+    type: Number,
+    required: true,
+    min: 1,
+    max: 100,
+  },
+  program: {
+    type: String,
+    require: true,
+    enum: ["javascript", "python", "ios", "android"],
+  },
+  startDate: {
     type: Date,
-    required: true,       
-    },
-    endDate:{
-        type:Date,
-        required: true,
-    },
-})
+    required: true,
+  },
+  endDate: {
+    type: Date,
+    required: true,
+  },
+});
 
-
-module.exports = mongoose.model("generations", schema)
+module.exports = mongoose.model("generations", schema);
