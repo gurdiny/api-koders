@@ -28,8 +28,7 @@ const schema = new mongoose.Schema({
     required: false,
   },
   generation: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "generations",
+    qsd,
   },
   createdAt: {
     type: Date,

@@ -7,8 +7,14 @@ const generationRouter = require("./routes/generation.router");
 
 const app = express();
 
+app.use(
+  cors({
+    origin: "http://127.0.0.1:5173", // Cambia esto al dominio de tu frontend
+    credentials: true, // Permite el envío de cookies y credenciales
+  })
+);
 // Middleware
-app.use(cors());
+// app.use(cors());
 app.use(express.json());
 app.use("/koders", koderRouter);
 app.use("/mentors", mentorsRouter);

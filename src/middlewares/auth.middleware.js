@@ -17,7 +17,7 @@ async function auth(request, response, next) {
   } catch (error) {
     response.status(401);
     response.json({
-      secces: false,
+      succes: false,
       error: error.message,
     });
   }

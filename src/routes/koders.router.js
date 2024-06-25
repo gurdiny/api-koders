@@ -11,7 +11,7 @@ router.get("/", auth, async (request, response) => {
   try {
     const koders = await kodersUseCase.getAll();
     response.json({
-      succes: true,
+      success: true,
       data: {
         koders,
       },
@@ -19,7 +19,7 @@ router.get("/", auth, async (request, response) => {
   } catch (error) {
     response.status(error.status || 500);
     response.json({
-      succes: false,
+      success: false,
       error: error.message,
     });
   }

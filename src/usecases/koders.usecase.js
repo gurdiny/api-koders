@@ -21,11 +21,11 @@ async function getAll() {
 }
 
 async function getById(id) {
-  const koder = await Koders.findById(id).populate("generation");
+  const koder = await Koders.findById(id).populate("generation"); //Si quieres otro populetes es dentro de la misma "" pero con espacios
   return koder;
 }
 async function deleteById(id) {
-  const koderDeleted = await Koders.findByIdAndDelete(id); //Si quieres otro populetes es dentro de la misma "" pero con espacios
+  const koderDeleted = await Koders.findByIdAndDelete(id);
   return koderDeleted;
 }
 
